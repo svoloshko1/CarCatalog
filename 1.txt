@@ -1,3 +1,2 @@
-Car	Skoda	Octavia	2,5	2402,5	wesdf
-Car	Skoda	Octavia	2,5	2402,5	sadasd
+Bus	Skoda	Octavia	2,5	2402,5	2	4
 

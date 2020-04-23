@@ -15,10 +15,15 @@ namespace IndividualTask
 {
     public partial class MainForm : Form
     {
+        
         private string filename;
         private List<Transport> list;
+    
+        
         public MainForm()
         {
+            LoadForm k = new LoadForm();
+            k.ShowDialog();
             InitializeComponent();
             list = new List<Transport>();
             filename = "";
@@ -91,9 +96,9 @@ namespace IndividualTask
             {
                 string[] data = readfile[i].Split('\t');
                 Transport element;
-           
-                    switch (data[0])
-                    {
+               
+                switch (data[0])
+                {
                         case "Car":
                             element = new Car(data[1],
                                 data[2],
@@ -112,11 +117,19 @@ namespace IndividualTask
                                 int.Parse(data[6]));
                             list.Add(element);
                             break;
-                    }
+                         
+                }
+               
             }
+
+        
+
             foreach (var car in list)
             {
-                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+                
+               
+                    dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+                
             }
         }
         #endregion
@@ -188,7 +201,6 @@ namespace IndividualTask
             dataGridView1.Rows.RemoveAt(ind);
         }
 
-
         private void openFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -198,12 +210,10 @@ namespace IndividualTask
         {
        
         }
-
+     
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-          
-                
-            
+  
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -211,8 +221,15 @@ namespace IndividualTask
             if (checkBox1.Checked == true || checkBox2.Checked == true)
             {
 
-                ItemForm k = new ItemForm();
+                ItemForm k = new ItemForm("Car");
                 k.ShowDialog();
+                list.Add(k.Transport);
+                k.Close();
+                foreach (var car in list)
+                {
+                    dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
             }
@@ -225,8 +242,7 @@ namespace IndividualTask
         {
             checkBox1.Visible = true;
             checkBox2.Visible = true;
-
-           
+     
         }
   
 
@@ -237,8 +253,15 @@ namespace IndividualTask
             if (checkBox1.Checked == true || checkBox2.Checked == true)
             {
 
-                ItemForm k = new ItemForm();
+                ItemForm k = new ItemForm("Bus");
                 k.ShowDialog();
+                list.Add(k.Transport);
+                k.Close();
+                foreach (var car in list)
+                {
+                    dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
             }
@@ -247,8 +270,43 @@ namespace IndividualTask
 
         private void addCarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ItemForm k = new ItemForm();
+            ItemForm k = new ItemForm("Car");
             k.ShowDialog();
+            list.Add(k.Transport);
+            k.Close();
+            foreach (var car in list)
+            {
+                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+           
+            }
+
         }
+    
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ind = dataGridView1.SelectedCells[0].RowIndex;
+            dataGridView1.Rows.RemoveAt(ind);
+        }
+
+        private void addBusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ItemForm k = new ItemForm("Bus");
+            k.ShowDialog();
+            list.Add(k.Transport);
+            k.Close();
+            foreach (var car in list)
+            {
+                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+
+            }
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
     }
 }

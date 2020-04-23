@@ -39,8 +39,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -120,6 +122,8 @@
             this.label5.Size = new System.Drawing.Size(93, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Transmission";
+            this.label5.Visible = false;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // button1
             // 
@@ -134,13 +138,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Add Car";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(703, 213);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(145, 20);
-            this.textBox6.TabIndex = 11;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -152,14 +150,43 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Add car to your catalog";
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(703, 210);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(145, 20);
+            this.textBox5.TabIndex = 13;
+            this.textBox5.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("MV Boli", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(592, 239);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Seats Number";
+            this.label7.Visible = false;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(703, 236);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(145, 20);
+            this.textBox6.TabIndex = 16;
+            this.textBox6.Visible = false;
+            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(860, 423);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -190,7 +217,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
