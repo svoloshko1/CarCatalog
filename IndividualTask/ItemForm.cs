@@ -16,5 +16,10 @@ namespace IndividualTask
         {
             InitializeComponent();
         }
+
+        private void ItemForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

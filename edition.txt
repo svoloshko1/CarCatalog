@@ -1,0 +1,4 @@
+1 Skoda	Octavia	2,5	2402,5 manual
+0 Bmw	x5	2,5	2402,5	3	4
+1 Audi	a6	2,5	2402,5 auto
+0 Mercedes	e250	2,5	2402,5	3	4

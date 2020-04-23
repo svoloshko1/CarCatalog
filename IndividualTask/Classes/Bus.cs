@@ -12,7 +12,15 @@ namespace IndividualTask
         public int SeatsNumber { get; set; }
         public Bus(string brand, string transportModel, double engineCapacity, double price, int passengerCapacity, int seatsNumber) : base(brand, transportModel, engineCapacity, price)
         {
+            if (passengerCapacity<=0) {
+                throw new ArgumentException("Passenger capasity can not be less or equal zero.", nameof(passengerCapacity));
+            }
             PassengerCapacity = passengerCapacity;
+
+            if (seatsNumber <= 0)
+            {
+                throw new ArgumentException("Passenger capasity can not be less or equal zero.", nameof(seatsNumber));
+            }
             SeatsNumber = seatsNumber;
         }
         public override string ToString()
