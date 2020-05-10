@@ -1,2 +1,5 @@
 Bus	Skoda	Octavia	2,5	2402,5	2	4
-
+Car	Skoda	Octavia	2,5	2402,5	manual	
+Car	Skoda	Octavia	2,5	2402,5	manual	
+Car	Skoda	Octavia	2,5	2402,5	manual	
+Bus	Skoda	Octavia	2,5	2402,5	2	4

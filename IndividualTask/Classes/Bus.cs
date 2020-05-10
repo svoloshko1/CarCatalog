@@ -25,7 +25,7 @@ namespace IndividualTask
         }
         public override string ToString()
         {
-            return base.ToString() + $"{PassengerCapacity}\t{SeatsNumber}";
+            return base.ToString() + $"\t{PassengerCapacity}\t{SeatsNumber}";
         }
     }
 }

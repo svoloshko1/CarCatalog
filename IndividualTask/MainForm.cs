@@ -15,11 +15,11 @@ namespace IndividualTask
 {
     public partial class MainForm : Form
     {
-        
+        FileStream fs = new FileStream(@"D:\1.txt", FileMode.Create);
         private string filename;
         private List<Transport> list;
-    
-        
+       
+
         public MainForm()
         {
             LoadForm k = new LoadForm();
@@ -78,14 +78,16 @@ namespace IndividualTask
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ItemForm k = new ItemForm();
-            k.ShowDialog();
+            dataGridView1.Rows.Clear();
+            list.Clear();
+            MessageBox.Show("Created succesfully");
+
+            
         }
 
         #region зчитування з файлу
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
 
             openFileDialog1.ShowDialog();
             string filename = openFileDialog1.FileName;
@@ -96,26 +98,30 @@ namespace IndividualTask
             {
                 string[] data = readfile[i].Split('\t');
                 Transport element;
-               
+             
                 switch (data[0])
                 {
                         case "Car":
-                            element = new Car(data[1],
+                        
+                        element = new Car(data[1],
                                 data[2],
                                 double.Parse(data[3]),
                                 double.Parse(data[4]),
                                 data[5]);
-                            list.Add(element);
-                            break;
-                        case "Bus":
+                        list.Add(element);
+                        break;
 
-                            element = new Bus(data[1],
+                        case "Bus":
+                    
+
+                        element = new Bus(data[1],
                                 data[2],
                                 double.Parse(data[3]),
                                 double.Parse(data[4]),
                                 int.Parse(data[5]),
                                 int.Parse(data[6]));
-                            list.Add(element);
+
+                        list.Add(element);
                             break;
                          
                 }
@@ -138,6 +144,46 @@ namespace IndividualTask
         #region Зберігання в файл
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            
+            StreamWriter streamWriter = new StreamWriter(fs);
+
+            try
+            {
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                {
+                    for (int i = 0; i < dataGridView1.Rows[j].Cells.Count; i++)
+                    {
+                        streamWriter.Write(dataGridView1.Rows[j].Cells[i].Value + "     ");
+                    }
+
+                    streamWriter.WriteLine();
+                }
+
+                streamWriter.Close();
+                fs.Close();
+
+                MessageBox.Show("Saved succesfully");
+            }
+            catch
+            {
+                MessageBox.Show("Error!");
+            }
+
+
+        }
+
+    
+        #endregion
+
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             int rowCounter = dataGridView1.RowCount;
             int columnCount = dataGridView1.ColumnCount;
             string[] line = new string[columnCount];
@@ -157,18 +203,6 @@ namespace IndividualTask
                     }
                 }
             }
-        }
-        #endregion
-
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -225,6 +259,7 @@ namespace IndividualTask
                 k.ShowDialog();
                 list.Add(k.Transport);
                 k.Close();
+                dataGridView1.Rows.Clear();
                 foreach (var car in list)
                 {
                     dataGridView1.Rows.Add((car.ToString()).Split('\t'));
@@ -257,6 +292,7 @@ namespace IndividualTask
                 k.ShowDialog();
                 list.Add(k.Transport);
                 k.Close();
+                dataGridView1.Rows.Clear();
                 foreach (var car in list)
                 {
                     dataGridView1.Rows.Add((car.ToString()).Split('\t'));
@@ -274,11 +310,21 @@ namespace IndividualTask
             k.ShowDialog();
             list.Add(k.Transport);
             k.Close();
+            DataGridViewTextBoxColumn dgvTransmission;
+            dgvTransmission = new DataGridViewTextBoxColumn();
+
+     
+            dgvTransmission.HeaderText = "Transmission";
+     
+            //добавили колонку
+            dataGridView1.Columns.Add(dgvTransmission);
+
             foreach (var car in list)
             {
                 dataGridView1.Rows.Add((car.ToString()).Split('\t'));
            
             }
+         
 
         }
     
@@ -295,10 +341,22 @@ namespace IndividualTask
             k.ShowDialog();
             list.Add(k.Transport);
             k.Close();
+
+            DataGridViewTextBoxColumn dgvPassengers;
+            dgvPassengers = new DataGridViewTextBoxColumn();
+            dgvPassengers.HeaderText = "Passengers";
+
+            DataGridViewTextBoxColumn dgvSeats;
+            dgvSeats = new DataGridViewTextBoxColumn();
+            dgvSeats.HeaderText = "SeatsNumber";
+
+            //добавили колонку
+            dataGridView1.Columns.Add(dgvPassengers);
+            dataGridView1.Columns.Add(dgvSeats);
+          
             foreach (var car in list)
             {
                 dataGridView1.Rows.Add((car.ToString()).Split('\t'));
-
             }
         }
 
@@ -307,6 +365,77 @@ namespace IndividualTask
 
         }
 
-        
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+            //list.Add(k.Transport);
+          
+            int index = dataGridView1.CurrentCell.RowIndex;
+            
+            dataGridView1.Rows.Clear();
+            if(list[index] is Car)
+            {
+                ItemForm k = new ItemForm("Car");
+                k.ShowDialog();
+                list[index] = k.Transport;
+
+            }
+            else 
+            {
+                ItemForm k = new ItemForm("Bus");
+                k.ShowDialog();
+                list[index] = k.Transport;
+            }
+
+            
+
+            foreach (var car in list)
+            {
+                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+            }
+        }
+
+        private void itemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ItemForm k = new ItemForm("Bus");
+            k.ShowDialog();
+            //list.Add(k.Transport);
+
+            int index = dataGridView1.CurrentCell.RowIndex;
+            list[index] = k.Transport;
+            dataGridView1.Rows.Clear();
+            foreach (var car in list)
+            {
+                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+            }
+
+          
+        }
+
+        private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace IndividualTask
 {
     public partial class ItemForm :Form
     {
-        
+
         private Transport transport;
         public Transport Transport { get => transport; }
         private string typeElem;
@@ -35,7 +35,7 @@ namespace IndividualTask
             if (type == "Car")
             {
                 typeElem = type;
-                label5.Text="Transmission";
+                label5.Text = "Transmission";
                 textBox5.Visible = true;
                 label5.Visible = true;
             }
@@ -50,9 +50,6 @@ namespace IndividualTask
 
                 textBox6.Visible = true;
                 label7.Visible = true;
-            
-                
-
             }
         }
         public void button1_Click(object sender, EventArgs e)
@@ -75,9 +72,32 @@ namespace IndividualTask
                     Convert.ToInt32(textBox5.Text),
                     Convert.ToInt32(textBox6.Text));
             }
+
+            this.Close();
         }
         private void label5_Click(object sender, EventArgs e)
         {
+
+        }
+        public void Update(string update)
+        {
+           
+            string[] info = update.Split('\t');
+            textBox1.Text = info[0];
+            textBox2.Text = info[1];
+            textBox3.Text = info[2];
+            textBox4.Text = info[3];
+            button1.Text = "Update";
+            if (typeElem == "Car")
+            {
+                textBox5.Text = info[4];
+            }
+            else if (typeElem == "Bus")
+            {
+                textBox5.Text = info[4];
+                textBox6.Text = info[5];
+            }
+          
 
         }
     }
