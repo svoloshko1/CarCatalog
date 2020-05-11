@@ -23,9 +23,9 @@ namespace IndividualTask
 
         }
 
-        private void chart1_Click(object sender, EventArgs e)
+        public void chart1_Click(object sender, EventArgs e)
         {
-  
+            //chart1.Series["Price"].Points.AddXY(d.CurrentRowIndex);
         }
     }
 }

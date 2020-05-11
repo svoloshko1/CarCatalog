@@ -85,6 +85,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormDataSet)).BeginInit();
@@ -103,7 +106,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(997, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1014, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -223,14 +226,14 @@
             // viewHelpToolStripMenuItem
             // 
             this.viewHelpToolStripMenuItem.Name = "viewHelpToolStripMenuItem";
-            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.viewHelpToolStripMenuItem.Text = "view help";
             this.viewHelpToolStripMenuItem.Click += new System.EventHandler(this.viewHelpToolStripMenuItem_Click);
             // 
             // aboutAuthorToolStripMenuItem
             // 
             this.aboutAuthorToolStripMenuItem.Name = "aboutAuthorToolStripMenuItem";
-            this.aboutAuthorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutAuthorToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.aboutAuthorToolStripMenuItem.Text = "about author";
             this.aboutAuthorToolStripMenuItem.Click += new System.EventHandler(this.aboutAuthorToolStripMenuItem_Click);
             // 
@@ -424,6 +427,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.checkBox6);
+            this.panel1.Controls.Add(this.checkBox5);
+            this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.checkBox4);
             this.panel1.Controls.Add(this.checkBox3);
             this.panel1.Controls.Add(this.button6);
@@ -438,24 +444,22 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(266, 438);
+            this.panel1.Size = new System.Drawing.Size(266, 529);
             this.panel1.TabIndex = 5;
             // 
             // checkBox4
             // 
-            this.checkBox4.AutoCheck = false;
             this.checkBox4.BackColor = System.Drawing.Color.White;
             this.checkBox4.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkBox4.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.checkBox4.Location = new System.Drawing.Point(129, 417);
+            this.checkBox4.Location = new System.Drawing.Point(130, 417);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(137, 23);
+            this.checkBox4.Size = new System.Drawing.Size(135, 23);
             this.checkBox4.TabIndex = 10;
-            this.checkBox4.Text = "by Engine   ";
+            this.checkBox4.Text = "by  Engine   ";
             this.checkBox4.UseVisualStyleBackColor = false;
             this.checkBox4.Visible = false;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_1);
             // 
             // checkBox3
             // 
@@ -477,12 +481,13 @@
             this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 388);
+            this.button6.Location = new System.Drawing.Point(-1, 388);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(266, 29);
+            this.button6.Size = new System.Drawing.Size(267, 29);
             this.button6.TabIndex = 9;
             this.button6.Text = "Add Chart";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // checkBox2
             // 
@@ -590,7 +595,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(266, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(731, 66);
+            this.panel3.Size = new System.Drawing.Size(748, 66);
             this.panel3.TabIndex = 0;
             // 
             // panel6
@@ -599,7 +604,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(729, 20);
+            this.panel6.Size = new System.Drawing.Size(746, 20);
             this.panel6.TabIndex = 1;
             // 
             // label6
@@ -619,15 +624,57 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(266, 90);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(731, 55);
+            this.panel4.Size = new System.Drawing.Size(748, 55);
             this.panel4.TabIndex = 0;
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Arial Nova Cond", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(-1, 442);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(267, 29);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Sort";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.BackColor = System.Drawing.Color.White;
+            this.checkBox5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.checkBox5.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox5.Location = new System.Drawing.Point(0, 471);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(130, 23);
+            this.checkBox5.TabIndex = 9;
+            this.checkBox5.Text = "by Brand       ";
+            this.checkBox5.UseVisualStyleBackColor = false;
+            this.checkBox5.Visible = false;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.BackColor = System.Drawing.Color.White;
+            this.checkBox6.Cursor = System.Windows.Forms.Cursors.Default;
+            this.checkBox6.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox6.Location = new System.Drawing.Point(130, 471);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(135, 23);
+            this.checkBox6.TabIndex = 11;
+            this.checkBox6.Text = "by  Price  ";
+            this.checkBox6.UseVisualStyleBackColor = false;
+            this.checkBox6.Visible = false;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(997, 462);
+            this.ClientSize = new System.Drawing.Size(1014, 553);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -708,10 +755,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Button button7;
     }
 }
 

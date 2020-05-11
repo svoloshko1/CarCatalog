@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
+using System.Diagnostics;
 
 namespace IndividualTask
 {
@@ -306,25 +307,23 @@ namespace IndividualTask
 
         private void addCarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ItemForm k = new ItemForm("Car");
-            k.ShowDialog();
-            list.Add(k.Transport);
-            k.Close();
-            DataGridViewTextBoxColumn dgvTransmission;
-            dgvTransmission = new DataGridViewTextBoxColumn();
-
-     
-            dgvTransmission.HeaderText = "Transmission";
-     
-            //добавили колонку
-            dataGridView1.Columns.Add(dgvTransmission);
-
-            foreach (var car in list)
+            if (checkBox1.Checked == true || checkBox2.Checked == true)
             {
-                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
-           
+
+                ItemForm k = new ItemForm("Car");
+                k.ShowDialog();
+                list.Add(k.Transport);
+                k.Close();
+                dataGridView1.Rows.Clear();
+                foreach (var car in list)
+                {
+                    dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+
+                }
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
             }
-         
+
 
         }
     
@@ -337,26 +336,23 @@ namespace IndividualTask
 
         private void addBusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ItemForm k = new ItemForm("Bus");
-            k.ShowDialog();
-            list.Add(k.Transport);
-            k.Close();
 
-            DataGridViewTextBoxColumn dgvPassengers;
-            dgvPassengers = new DataGridViewTextBoxColumn();
-            dgvPassengers.HeaderText = "Passengers";
 
-            DataGridViewTextBoxColumn dgvSeats;
-            dgvSeats = new DataGridViewTextBoxColumn();
-            dgvSeats.HeaderText = "SeatsNumber";
-
-            //добавили колонку
-            dataGridView1.Columns.Add(dgvPassengers);
-            dataGridView1.Columns.Add(dgvSeats);
-          
-            foreach (var car in list)
+            if (checkBox1.Checked == true || checkBox2.Checked == true)
             {
-                dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+
+                ItemForm k = new ItemForm("Bus");
+                k.ShowDialog();
+                list.Add(k.Transport);
+                k.Close();
+                dataGridView1.Rows.Clear();
+                foreach (var car in list)
+                {
+                    dataGridView1.Rows.Add((car.ToString()).Split('\t'));
+
+                }
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
             }
         }
 
@@ -417,25 +413,80 @@ namespace IndividualTask
 
           
         }
-
-        private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Process.Start("https://github.com/Svyatik228/CarCatalog");
+        }
+        private  void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.linkedin.com/feed/");
+        }
+      
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            checkBox4.Visible=true;
+            checkBox3.Visible = true;
+          
+        }
+  
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true || checkBox4.Checked == true)
+            {
+
+                ChartForm b = new ChartForm();
+                b.ShowDialog();
+                checkBox3.Checked = false;
+                checkBox4.Checked = false;
+
+            }
+
+        }
+
+        private void checkBox4_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true || checkBox4.Checked == true)
+            {
+
+                ChartForm c = new ChartForm();
+                c.ShowDialog();
+                //c.chart1_Click(dataGridView1);
+                checkBox3.Checked = false;
+                checkBox4.Checked = false;
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            checkBox5.Visible = true;
+            checkBox6.Visible = true;
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+
+            var selectItem = from t in list
+                             orderby t.Brand
+                             select t;
+
+
+            dataGridView1.DataSource = selectItem.ToList();
+            
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            var selectItem = from t in list
+                             orderby t.Price
+                             select t;
+
+
+
+            dataGridView1.DataSource = selectItem.ToList();
         }
     }
 }
