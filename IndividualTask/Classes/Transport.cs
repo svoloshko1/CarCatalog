@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IndividualTask
 {
-    public  class Transport
+    public  class Transport: IComparable
     {
         public string Brand{get;set;}
         public string TransportModel { get; set; }
@@ -44,5 +44,9 @@ namespace IndividualTask
             return $"{ Brand}\t{TransportModel}\t{EngineCapacity}\t{Price}";
         }
 
+        public int CompareTo(object obj)
+        {
+            return Price.CompareTo(obj);
+        }
     }
 }

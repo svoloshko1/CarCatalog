@@ -1,0 +1,5 @@
+Bus	Skoda	Octavia	2,5	1800,5	2	4
+Car	Audi	a8	2,5	2402,5	manual	
+Car	Renault	Megane	2,5	2800,3	manual	
+Car	Mazda	6	2,5	1200,2	manual	
+Bus	Mercedes	e250	2,5	2402,5	2	4
