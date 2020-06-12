@@ -8,4 +8,4 @@ Add, update or delete information about cars and also make a chart.
 
 
 ## Main Form
-![](D:\2.png)
+![](D:\2)
