@@ -8,4 +8,4 @@ Add, update or delete information about cars and also make a chart.
 
 
 ## Main Form
-![](D:\2)
+![2](https://user-images.githubusercontent.com/48102382/84490069-4ed21f80-acab-11ea-8b9c-d908262a816b.png)
